@@ -1,0 +1,47 @@
+/**************************************
+ONBOARDING
+**************************************/
+
+// CONTAINER FOR ALL TONE BLOCKS
+#tone-blocks-container {
+  // LAYOUT
+  height: 100%;
+  padding: 2rem calc(((100vw / 8) / 2) - 0.75rem);
+  // FLEXBOX
+  @include flexbox;
+  @include flex-flow(row nowrap);
+  @include justify-content(space-between);
+}
+
+// CONTAINER FOR EACH BEAT'S SET OF TONE BLOCKS
+.tone-blocks-beat-container {
+  // FLEXBOX CONTAINER
+  @include flexbox;
+  @include flex-flow(column nowrap);
+  @include align-items(center);
+}
+
+// SINGLE TONE BLOCK
+.tone-block {
+  // LAYOUT
+  width: 1.5rem;
+  min-width: 1.5rem;
+  height: 100%;
+  // APPEARANCE
+  background-color: $bgColor-1;
+  // BEHAVIOR
+  cursor: pointer;
+  @include bp($bp-1) {
+    margin: 0.25rem 0;
+  }
+  &:hover {
+    opacity: $hover-opacity;
+  }
+}
+
+// REDUCE OPACITY WHEN ACTIVE
+.tone-block.active {
+  &:hover {
+    opacity: 0.95;
+  }
+}

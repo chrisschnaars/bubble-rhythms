@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title data-head="true">Sound Tools | Bubble Rhythms</title>
+    <meta name="description" content="A generative rhythm-making tool for kids and adults." data-head="true"/>
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon.ico">
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,700&display=swap " rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- ONBOARDING -->
+    <div class="onboarding-container">
+      <div class="onboarding-content-container">
+        <h1 class="txt-onboarding">This is Bubble Rhythms</h1>
+        <p class="txt-onboarding">Click or tap on the gray bars to create a unique tone pattern. Remember that all control is fleeting.</p>
+        <button id="begin-cta" class="cta-button" type="button" name="begin">
+          <span class="cta-label">Begin</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- CANVAS CONTAINER -->
+    <div id="main-container">
+      <div id="tone-blocks-container"></div>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <!-- CONTROL PANEL -->
+    <div id="control-bar">
+      <div id="controls-container">
+
+        <!-- PLAY/PAUSE BUTTON -->
+        <div class="btn-element">
+          <button id="play-toggle" class="primary-button pause-btn" type="button" name="mute">
+          </button>
+        </div>
+
+        <!-- SOUND SELECTOR -->
+        <div class="control-element">
+          <div class="bp736-hidden">
+            <!-- CONTROL LABEL -->
+            <label class="t-ctr-bp1">Sound Bank</label>
+            <!-- TOGGLE GROUP -->
+            <div class="toggle-group sound-selector">
+              <button name="sound-selector" value="0" type="button" class="toggle selected">
+                  <span class="control-label">Celeste</span>
+              </button>
+              <button name="sound-selector" value="1" type="button" class="toggle">
+                  <span class="control-label">Trombone</span>
+              </button>
+              <button name="sound-selector" value="2" type="button" class="toggle">
+                  <span class="control-label">Organ</span>
+              </button>
+              <button name="sound-selector" value="3" type="button" class="toggle">
+                  <span class="control-label">Bass</span>
+              </button>
+              <button name="sound-selector" value="4" type="button" class="toggle">
+                  <span class="control-label">Strings</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- MINI SOUND SELECTOR BUTTON -->
+          <div class="bp736-visible">
+            <button id="sound-selector-mini" class="mini-toggle" type="button" name="sound-selector" aria-label="Select Sound">
+              <span id="sound-selector-mini-label" class="control-label">Celeste</span>
+            </button>
+            <!-- CONTROL LABEL -->
+            <label for="sound-selector-mini" class="control-label t-ctr-bp1">Sound Bank</label>
+          </div>
+        </div>
+
+        <!-- REFRESH NOTES -->
+        <div class="btn-element bp1-hidden">
+          <button id="refresh-btn" class="icon-button refresh-btn" type="button" name="refresh" aria-label="Refresh Notes">
+          </button>
+          <label for="refresh-btn" class="control-label">Refresh</label>
+        </div>
+
+        <!-- CLEAR -->
+        <div class="btn-element">
+          <button id="clear-btn" class="icon-button clear-btn" type="button" name="clear" aria-label="Clear Pattern">
+          </button>
+          <label for="clear-btn" class="control-label">Clear</label>
+        </div>
+
+        <!-- ABOUT MODAL BUTTON -->
+        <div class="btn-element">
+          <button id="about-modal-open" class="icon-button info-btn" type="button" name="about">
+          </button>
+          <label for="about-modal-open" class="control-label">Info</label>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ABOUT MODAL  -->
+    <div id="about-modal" class="modal">
+      <button id="about-modal-close" class="icon-button close-btn" type="button" name="Close">
+      </button>
+      <div class="about-content">
+        <!-- TITLE -->
+        <div class="content-section">
+          <h1>Bubble Rhythms</h1>
+        </div>
+
+        <!-- HOW TO PLAY -->
+        <div class="content-section">
+          <h2>How To Play</h2>
+          <p class="content">In Bubble Rhythms, sounds are made when a Bubble (the colorful moving balls below) intersect with a Tone Block (the gray bars) that has been turned on. To turn a Tone Block on and off, simply click on it.</p>
+        </div>
+
+        <!-- KEYBOARD SHORTCUTS -->
+        <div class="content-section">
+          <h2>Keyboard Shortcuts</h2>
+          <p class="content">
+            Q: Randomize Rhythm
+            <br>
+            Spacebar: Play/Pause Bubble Tones
+          </p>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="content-section">
+          <h2>About Bubble Rhythms</h2>
+          <p class="content">Bubble Rhythms is a tone-sequencing "game" that enables the user/composer to create a completely unique rhythm of tones. Each Bubble is set to a different note in the A major scale, and will play depending on the Tone Blocks that the user has turned on.</p>
+
+          <p class="content">What makes Bubble Rhythms different is that each Bubble is set to its own tempo, which adds a bit of unpredictability to the game and hopefully puts the user in a more experimental creative mindset.</p>
+
+          <p class="content">Bubble Rhythms was created by <a href="https://chrisschnaars.com/">Chris Schnaars</a>. The sounds used here all came from the <a href="https://github.com/GoogleChromeLabs/web-audio-samples/tree/gh-pages/samples/audio/wave-tables">Google Chrome Labs repository</a>. Please <a href="mailto:hello@chrisschnaars.com">get in touch</a> with any questions, problems, or feedback. You can find the code on <a href="https://github.com/chrisschnaars/bubble-rhythms">Github</a> and more generative sound games <a href="https://schnaars.xyz/">here</a>.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Load Main Script  -->
+    <script src="js/main.js"></script>
+
+  </body>
+
+</html>
