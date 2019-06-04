@@ -30,7 +30,7 @@ window.onload = function() {
   createToneBlocks();
   createOffscreenCanvas();
 
-  // SETUP ITERACTION
+  // SETUP INTERACTION
   setupInteraction();
 
   // EVENT LISTENER FOR ONBOARDING CTA
