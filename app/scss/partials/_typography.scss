@@ -55,5 +55,13 @@ p {
   line-height: $btn-line-height;
 }
 
+.btn-label--cta {
+  color: $white;
+  font-size: $font-size-18;
+  letter-spacing: inherit;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 // GLOBAL FONT COLOR MODIFIER
 .col--white { color: $white; }
