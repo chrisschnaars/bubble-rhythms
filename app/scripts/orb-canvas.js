@@ -3,7 +3,7 @@ CANVAS SETUP
 ************************************************/
 
 // ORB CANVAS SETUP
-const canvas = document.querySelector('#canvas');
+const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
 // CANVAS HEIGHT AND WIDTH
@@ -19,7 +19,7 @@ function setCanvasSize() {
 
   // SET HEIGHT (SANS CONTROL BAR)
   let height = window.innerHeight || document.body.clientWidth;
-  let controlBarHeight = document.querySelector('#control-bar').offsetHeight;
+  let controlBarHeight = document.querySelector('.control-bar').offsetHeight;
   ch = height - controlBarHeight;
 
   // SET WIDTH AND HEIGHT
@@ -56,17 +56,17 @@ function drawOrbs() {
 // TOGGLE LOOPING
 function togglePlaying() {
   // DOM ELEMENTS
-  const playToggle = document.querySelector('#play-toggle');
+  const playToggle = document.querySelector('.js-play-toggle');
 
   // TOGGLE PLAYING
   if (looping) {
     // TOGGLE BUTTON CLASS
-    playToggle.classList.remove("pause-btn");
-    playToggle.classList.add("play-btn");
+    playToggle.classList.remove("btn--pause");
+    playToggle.classList.add("btn--play");
     looping = false;
   } else {
-    playToggle.classList.remove("play-btn");
-    playToggle.classList.add("pause-btn");
+    playToggle.classList.remove("btn--play");
+    playToggle.classList.add("btn--pause");
     looping = true;
     drawOrbs();
   }

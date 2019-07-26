@@ -3,7 +3,7 @@ INTERACTIVITY
 ************************************************/
 
 // DOM ELEMENTS
-const playToggle = document.querySelector('#play-toggle');
+const playToggle = document.querySelector('.js-play-toggle');
 
 // SET UP EVENT LISTENERS //
 function setupInteraction() {
@@ -36,42 +36,39 @@ function setupInteraction() {
   },false);
 
   // SOUND SELECTOR
-  document.querySelector('.sound-selector').addEventListener('click', function(e){
+  document.querySelector('.js-sound-selector').addEventListener('click', function(e){
     let id = e.target.value;
     setWave(id);
     updateToggleStatus(e);
   }, false);
 
   // MOBILE SOUND SELECTOR
-  let ssm = document.querySelector("#sound-selector-mini");
+  let ssm = document.querySelector(".js-sound-selector-mini");
   ssm.addEventListener('click', function(e){
     setWave(null);
     e.target.blur();
   }, false);
 
   // REFRESH SPEEDS BUTTON
-  document.querySelector("#refresh-btn").addEventListener('click', function(e){
+  document.querySelector(".js-refresh-btn").addEventListener('click', function(e){
     setOrbSpeeds();
     e.target.blur();
   }, false);
 
   // CLEAR BUTTON
-  document.querySelector("#clear-btn").addEventListener('click', function(e){
+  document.querySelector(".js-clear-btn").addEventListener('click', function(e){
     clearToneBlocks();
     e.target.blur();
   }, false);
 
   // ABOUT BUTTON - SHOW ABOUT MODAL
-  document.querySelector("#about-modal-open").addEventListener("click", function(e) {
-    document.querySelector("#about-modal").classList.add("visible");
-    e.target.blur();
+  document.querySelector(".js-about-open-btn").addEventListener("click", function() {
+    document.querySelector(".about").classList.add("about--visible");
   }, false);
 
-  // CLOSE ABOUT TOGGLE
-  // ABOUT BUTTON - SHOW ABOUT MODAL
-  document.querySelector("#about-modal-close").addEventListener("click", function(e) {
-    document.querySelector("#about-modal").classList.remove("visible");
-    e.target.blur();
+  // CLOSE ABOUT TOGGLEL
+  document.querySelector(".js-about-close-btn").addEventListener("click", function() {
+    document.querySelector(".about").classList.remove("about--visible");
   }, false);
 }
 
@@ -84,13 +81,11 @@ document.addEventListener('keydown', function(e) {
 
   // RANDOM SELECTION
   if (e.key == "Q" || e.key == "q") {
-    console.log("random!");
     setRandomBlocks();
   }
 
   // TABBING
   if (e.key === 'Tab') { // the "I am a keyboard user" key
-      console.log('tab key man');
       document.body.classList.add('user-is-tabbing');
       // window.removeEventListener('keydown', handleFirstTab);
   }
@@ -104,11 +99,11 @@ TOGGLE GROUP UPDATES
 // UPDATE TOGGLE BUTTON GROUP FOR ACTIVE SELECTION
 function updateToggleStatus(e) {
   // REMOVE SELECTED CLASS FROM ALL TOGGLES
-  let toggleButtons = document.querySelectorAll('.toggle');
-  for (var i=0; i<toggleButtons.length; i++) {
-    toggleButtons[i].classList.remove('selected');
+  let toggleButtons = document.querySelectorAll('.btn--toggle');
+  for (let i=0; i<toggleButtons.length; i++) {
+    toggleButtons[i].classList.remove('btn--toggle-selected');
   }
 
   // ADD SELECTED CLASS TO SELECTED
-  e.target.classList.add( "selected" );
+  e.target.classList.add('btn--toggle-selected');
 }

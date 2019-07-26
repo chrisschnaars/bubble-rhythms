@@ -11,42 +11,49 @@ let toneBlockContainerDivs; // array of each container of toggles
 
 // CREATE TONE BLOCKS
 function createToneBlocks() {
+
   // SET INDEX FOR UNIQUE TONE BLOCK ID
   let index = 0;
 
+  // START BY CREATING BEAT CONTAINERS
   for (var i=0; i<numBeats; i++) {
-    // CREATE TONE BLOCK CONTAINER FOR BEAT
-    let tbc = document.createElement('div');
-    tbc.classList.add('tone-blocks-beat-container', 'beat-' + i);
 
-    // ADD TONE BLOCKS CONTAINER TO PARENT DIV
-    let pD = document.querySelector('#tone-blocks-container');
+    // CREATE BEAT CONTAINER DIV FOR EACH BEAT
+    let tbc = document.createElement('div');
+    tbc.classList.add('tone-blocks__beat-container', 'beat-' + i);
+
+    // ADD BEAT CONTAINER TO TONE BLOCKS CONTAINER
+    let pD = document.querySelector('.tone-blocks');
     pD.append(tbc);
 
+
+    // ADD TONE BLOCKS TO BEAT
     for (var j=0; j<numOrbs; j++) {
+
       // CREATE TONE BLOCK DIV ELEMENT
       let t = document.createElement('div');
       t.id = index; // add id
-      t.classList.add('tone-block'); // add tone-toggle class
+      t.classList.add('tone-blocks__tone-block'); // add tone-toggle class
 
-      // APPEND TO TONE BLOCK CONTAINER
+      // ADD TONE BLOCK TO BEAT CONTAINER
       tbc.append(t); // add to parent div
 
-      // GET X AND Y POSITIONS
+      // GET X AND Y POSITION OF TONE BLOCK
       let x = xPos[i];
       let y = yPos[j];
 
-      // CREATE TONE BLOCKS
+      // CREATE TONE BLOCKS JAVSCRIPT OBJECT
+      // THIS IS FOR SOUND PURPOSES ONLY
       toneblocks[index] = new ToneBlock(x, y, orbColors[j][0], i,  j, index);
 
       index++;
     }
   }
 
-  // SET TOGGLE DIVS VARIABLE
-  toneBlockDivs = document.getElementsByClassName('tone-block');
-  // toneBlockContainerDivs = document.getElementsByClassName('tone-block-container');
+  // CREATE ARRAY OF ALL TONE BLOCKS
+  toneBlockDivs = document.getElementsByClassName('tone-blocks__tone-block');
 }
+
 
 // CLEAR ALL TONE BLOCK SELECTIONS
 function clearToneBlocks() {
@@ -57,6 +64,7 @@ function clearToneBlocks() {
     }
   }
 }
+
 
 // RANDOMLY TOGGLE BLOCKS
 function setRandomBlocks() {
@@ -90,11 +98,11 @@ ToneBlock.prototype.toggle = function() {
 
   // TOGGLE ACTIVE FLAG
   if (this.active) {
-    t.classList.remove('active');
+    t.classList.remove('tone-block--active');
     o.rhythm[this.beatId] = false;
     this.active = false;
   } else {
-    t.classList.add('active');
+    t.classList.add('tone-block--active');
     o.rhythm[this.beatId] = true;
     this.active = true;
   }

@@ -18,8 +18,6 @@ let xPos = []; // GRID X POSITIONS
 
 // INITIALIZE
 window.onload = function() {
-  // SET ONBOARDING COLOR
-  setOnboardColor();
 
   // INITIALIZE CANVAS
   setCanvasSize();
@@ -34,7 +32,7 @@ window.onload = function() {
   setupInteraction();
 
   // EVENT LISTENER FOR ONBOARDING CTA
-  document.querySelector('#begin-cta').addEventListener('click', function(e) {
+  document.querySelector('.js-onboarding-cta').addEventListener('click', function(e) {
     if (onboarding) {
       startBubbleRhythms();
     }
@@ -49,13 +47,4 @@ function startBubbleRhythms() {
   drawOrbs();
   // END ONBOARDING
   endOnboarding();
-}
-
-function endOnboarding() {
-  // ONBOARDING CONTAINER
-  const ob = document.querySelector('.onboarding-container');
-  // ADD HIDDEN CLASS
-  ob.classList.add('onboarding-container-hidden');
-  // TOGGLE ONBOARDING FLAG
-  onboarding = false;
 }

@@ -39,14 +39,14 @@ function showGrid() {
   }
 }
 
-// RANDOMLY ASSIGN BACKGROUND COLOR TO ONBOARDING CONTAINER
-function setOnboardColor() {
+// END ONBOARDING
+function endOnboarding() {
   // ONBOARDING CONTAINER
-  var ob = document.querySelector('.onboarding-container');
-
-  let c = Math.round(getRandomNumber(0, orbColors.length - 1));
-  console.log(c);
-  ob.style.backgroundColor = orbColors[c][1];
+  let ob = document.querySelector('.onboarding');
+  // ADD HIDDEN CLASS
+  ob.classList.add('onboarding--hidden');
+  // TOGGLE ONBOARDING FLAG
+  onboarding = false;
 }
 
 // GENERATE A RANDOM NUMBER
